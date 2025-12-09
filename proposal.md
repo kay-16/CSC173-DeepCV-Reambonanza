@@ -47,10 +47,10 @@ Size: ~21000 images spanning falls and non-falls
 - Solution: YOLOv8n or Reduce frame resolution
 
 ## 7. References 
-- U.S. Centers for Disease Control and Prevenetion (CDC), 2024 Available from: https://www.cdc.gov/falls/data-research/
+- U.S. Centers for Disease Control and Prevenetion (CDC), 2024. Available from: https://www.cdc.gov/falls/data-research/
 
 - Department of Health. Online National Electronic Injury Surveillance System (ONEISS) Factsheet Volume 5, Issue 2. 2013 September. Available from: https://oneiss.doh.gov.ph/factsheets/2ndquarter2013.pdf.
 
 - Department of Health. Online National Electronic Injury Surveillance System (ONEISS) Factsheet Volume 7, Issue 2. 2015 November. Available from: https://oneiss.doh.gov.ph/factsheets/2ndquarter2015.pdf.
 
-- Department of Health. Online National Electronic Injury Surveillance System (ONEISS) Factsheet Volume 9, Issue 1. 2017 September. Available from: https://oneiss.doh.gov.ph/factsheets Final_sep_28_1st_2017_factsheet.pdf.
+- Department of Health. Online National Electronic Injury Surveillance System (ONEISS) Factsheet Volume 9, Issue 1. 2017 September. Available from: https://oneiss.doh.gov.ph/factsheets/Final_sep_28_1st_2017_factsheet.pdf.
