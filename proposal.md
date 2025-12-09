@@ -4,53 +4,41 @@
 **Date:** December 11, 2025
 
 ## 1. Project Title 
-Vision-Based Human Fall Detection Using Deep Learning in Philippine Settings
+Real-Time Visual Clutter & Risk Assessment of Philippine Electrical Posts Using Deep Learning
 
 ## 2. Problem Statement
-The risk and consequences of potential falls increase significantly with age, with people aged 65 years and above are susceptible to serious fall-related injuries that threaten their independence (CDC, 2024). In the Philippines, data from the Online National Electronic Injury Surveillance System (ONEISS) shows that fall is one of the top five leading causes of injury among Filipinos in 2013, 2015, and 2017. To address this concern, this project focuses on developing a deep learning-based fall detection system catered for common environments in the Philippines such as homes, schools, hospitals, barangay centers, and elderly-care facilities. By leveraging standard webcams and video-based models, the system aims to offer a low-cost, non-intrusive, and accessible solution that is timely and revelant, particularly valuable for communities with limited resources across the Philippines. 
+Electrical posts in several urban areas of the Philippines often contains clusters of tangled, overloaded, or poorly maintained wiring, which are commonly known as "spaghetti wires". These wires can often be hazardous which can pose risks of electrical fires, electrocution, and service interruptions. Manual inspection by local authorities can be time-consuming, inconsistent, and limited to manpower. 
+
+Therefore, this project aims to develop a deep learning- based system that analysises images of electrical posts and classifying them into multiple risk levels. By leveraging computer vision, the system can offer safety monitoring, early hazard detection, improve maintenance planning, and overall help LGUs prioritise which poles to clean up first.
+
 
 ## 3. Objectives
-- Develop a real-time fall detection system and train a deep computer vision model achieving target performance metrics
+- Develop a deep learning-based classification system and categorising hazardous wire conditions in electrical poles.
 
 - Implement complete training pipeline including data preprocessing, model training, validation, and evaluation.
 
 ## 4. Dataset Plan
-**Main Dataset**
-- Source: https://github.com/ekramalam/GMDCSA24-A-Dataset-for-Human-Fall-Detection-in-Videos/tree/v2.1
-Size: ~70 videos (falls + ADL)
-
-**Supplementary Dataset**
-- Source: https://falldataset.com/
-Size: ~21000 images spanning falls and non-falls
-
-- Classes:
-1. Fall
-2. ADL (Activities of Daily Living)
-3. Near fall
+- Classes and Labels:
+1. Safe = 0–25% clutter
+2. Slightly risky = 26–50%
+3. Dangerous = 51–75%
+4. Extremely dangerous = 76–100%
 
 - Acquisition:
-1. Download datasets (videos/images) -> extract frames -> preprocess to desired format
-
-2. Combine datasets -> shuffle
+1. Google Image (search terms: "Philippines spaghetti wires", "messsy electric post PH", "overloaded cables Philippines")
+2. News Articles (ABS-CBN, GMA, Rappler, Inquirer)
+3. Personal Images (optional)
 
 ## 5. Technical Approach
 - Architecture sketch
-- Model: YOLOv8n-Pose / ResNet50 + Fall Classifier ?
+- Model: ResNet50 (Transfer Learning)
 - Framework: PyTorch
-- Hardware: 
+- Hardware: Jupyter Notebook
 
 ## 6. Expected Challenges & Mitigations
 - Challenge: Small dataset
-- Solution: Combine two datasets  
+- Solution: Combine two datasets / Data Augmentation
 
 - Challenge: Real-time performance on laptop
 - Solution: YOLOv8n or Reduce frame resolution
 
-## 7. References 
-- U.S. Centers for Disease Control and Prevenetion (CDC), 2024. Available from: https://www.cdc.gov/falls/data-research/
-
-- Department of Health. Online National Electronic Injury Surveillance System (ONEISS) Factsheet Volume 5, Issue 2. 2013 September. Available from: https://oneiss.doh.gov.ph/factsheets/2ndquarter2013.pdf.
-
-- Department of Health. Online National Electronic Injury Surveillance System (ONEISS) Factsheet Volume 7, Issue 2. 2015 November. Available from: https://oneiss.doh.gov.ph/factsheets/2ndquarter2015.pdf.
-
-- Department of Health. Online National Electronic Injury Surveillance System (ONEISS) Factsheet Volume 9, Issue 1. 2017 September. Available from: https://oneiss.doh.gov.ph/factsheets/Final_sep_28_1st_2017_factsheet.pdf.
