@@ -25,9 +25,10 @@ Therefore, this project aims to develop a deep learning- based system that analy
 4. Extremely dangerous = 76–100%
 
 - Acquisition:
-1. Google Image (search terms: "Philippines spaghetti wires", "messsy electric post PH", "overloaded cables Philippines")
-2. News Articles (ABS-CBN, GMA, Rappler, Inquirer)
-3. Personal Images (optional)
+1. Google Image (search terms: "Philippines spaghetti wires", "messy electric post PH", "overloaded cables Philippines")
+2. Pexel 
+3. News Articles (ABS-CBN, GMA, Rappler, Inquirer)
+4. Personal Images
 
 ## 5. Technical Approach
 - Architecture sketch
