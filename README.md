@@ -1,4 +1,4 @@
-# [Project Title: e.g., Real-Time Object Detection for Waste Sorting]
+# Real-Time Visual Clutter & Risk Assessment of Electrical Posts Using Deep Learning
 **CSC173 Intelligent Systems Final Project**  
 *Mindanao State University - Iligan Institute of Technology*  
 **Student:** Kyla Reambonanza, 2022-1465 
