@@ -4,12 +4,12 @@
 **Date:** December 11, 2025
 
 ## 1. Project Title 
-Real-Time Visual Clutter & Risk Assessment of Philippine Electrical Posts Using Deep Learning
+Real-Time Visual Clutter & Risk Assessment of Electrical Posts Using Deep Learning
 
 ## 2. Problem Statement
 Electrical posts in several urban areas of the Philippines often contains clusters of tangled, overloaded, or poorly maintained wiring, which are commonly known as "spaghetti wires". These wires can often be hazardous which can pose risks of electrical fires, electrocution, and service interruptions. Manual inspection by local authorities can be time-consuming, inconsistent, and limited to manpower. 
 
-Therefore, this project aims to develop a deep learning- based system that analysises images of electrical posts and classifying them into multiple risk levels. By leveraging computer vision, the system can offer safety monitoring, early hazard detection, improve maintenance planning, and overall help LGUs prioritise which poles to clean up first.
+Therefore, this project aims to develop a deep learning- based system that analysises images of electrical posts and classifying them into multiple risk levels. By leveraging computer vision, the system can offer safety monitoring, early hazard detection, improve maintenance planning, and overall help authorities prioritise which poles to clean up first.
 
 
 ## 3. Objectives
