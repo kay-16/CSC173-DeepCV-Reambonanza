@@ -41,7 +41,7 @@ Therefore, this project aims to develop a deep learning- based system that analy
 | 6 | Decision Engine | Uses Softmax/Argmax to select one of the 4 classes |
 | 7 | Final Output | Real-time display of the output class (e.g. Dangerous) and the FPS |
 
-- Model: EfficientNet-B0 + YOLOv8n (optional)
+- Model: EfficientNet-B0 + YOLOv8n
 - Framework: PyTorch
 - Hardware: Jupyter Notebook
 
