@@ -47,7 +47,7 @@ Therefore, this project aims to develop a deep learning- based system that analy
 
 ## 6. Expected Challenges & Mitigations
 - Challenge: Small dataset
-- Solution: Combine two datasets / Data Augmentation
+- Solution: Combine two or more datasets / Data Augmentation
 
 - Challenge: Real-time performance on laptop
 - Solution: YOLOv8n or Reduce frame resolution
