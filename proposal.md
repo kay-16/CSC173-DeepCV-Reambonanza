@@ -28,6 +28,10 @@ Therefore, this project aims to develop a deep learning- based system that analy
 3. News Articles (ABS-CBN, GMA, Rappler, Inquirer)
 4. Personal Images
 
+- Expected size: 
+- 50 images per class
+- 200 images in total
+
 ## 5. Technical Approach
 - Architecture sketch
 
