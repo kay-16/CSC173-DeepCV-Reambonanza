@@ -26,9 +26,11 @@
 
 **Sample data preview:**
 ![Dataset Sample](dataset/train/dangerous/image_1.jpeg)
-(dataset/train/extremely_dangerous/image_1.jpeg)
-(dataset/train/safe/image_1.jpeg)
-(dataset/train/slightly_risky/image_1.jpeg)
+![Dataset Sample](dataset/train/extremely_dangerous/image_5.jpeg)
+![Dataset Sample](dataset/train/safe/image_1.jpg)
+![Dataset Sample](dataset/train/slightly_risky/image_1.jpeg)
+
+
 
 ## 2. Training Progress
 
