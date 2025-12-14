@@ -25,10 +25,18 @@
 - **Preprocessing applied:** Resize(640), normalization, augmentation (flip, rotate, brightness)
 
 **Sample data preview:**
-![Dataset Sample](dataset/train/dangerous/image_1.jpeg)
-![Dataset Sample](dataset/train/extremely_dangerous/image_5.jpeg)
-![Dataset Sample](dataset/train/safe/image_1.jpg)
-![Dataset Sample](dataset/train/slightly_risky/image_1.jpeg)
+
+<p><b>Dangerous</b></p>
+<img src="dataset/train/dangerous/image_1.jpeg" width="300">
+
+<p><b>Extremely Dangerous</b></p>
+<img src="dataset/train/extremely_dangerous/image_5.jpeg" width="300">
+
+<p><b>Safe</b></p>
+<img src="dataset/train/safe/image_1.jpg" width="300">
+
+<p><b>Slightly Risky</b></p>
+<img src="dataset/train/slightly_risky/image_1.jpeg" width="300">
 
 
 
