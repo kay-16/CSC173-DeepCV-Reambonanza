@@ -7,8 +7,8 @@
 ## 📊 Current Status
 | Milestone | Status | Notes |
 |-----------|--------|-------|
-| Dataset Preparation | ✅ In Progress | [X] images downloaded/preprocessed |
-| Initial Training | ⏳ Pending | [X] epochs completed |
+| Dataset Preparation | ✅ In Progress | images downloaded/preprocessed |
+| Initial Training | ⏳ Pending | epochs completed |
 | Baseline Evaluation | ⏳ Pending | Training ongoing |
 | Model Fine-tuning | ⏳ Not Started | Planned for tomorrow |
 
@@ -38,8 +38,6 @@
 <p><b>Slightly Risky</b></p>
 <img src="dataset/train/slightly_risky/image_1.jpeg" width="300">
 
-
-
 ## 2. Training Progress
 
 **Training Curves (so far)**
@@ -57,8 +55,9 @@
 ## 3. Challenges Encountered & Solutions
 | Issue | Status | Resolution |
 |-------|--------|------------|
-| CUDA out of memory | ✅ Fixed | Reduced batch_size from 32→16 |
-| Class imbalance | ⏳ Ongoing | Added class weights to loss function |
+| Small dataset  | ⏳ Planned | Data augmentation |
+| CUDA out of memory | ⏳ Planned | Reduced batch_size from 32→16 |
+| Class imbalance | ⏳ Planned | Added class weights to loss function |
 | Slow validation | ⏳ Planned | Implement early stopping |
 
 ## 4. Next Steps (Before Final Submission)
