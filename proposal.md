@@ -17,20 +17,21 @@ Therefore, this project aims to develop a deep learning- based system that analy
 
 ## 4. Dataset Plan
 - Classes and Labels:
-1. Safe = 0–25% clutter
-2. Slightly risky = 26–50%
-3. Dangerous = 51–75%
-4. Extremely dangerous = 76–100%
+    * Safe = 0–25% clutter
+    * Slightly risky = 26–50%
+    * Dangerous = 51–75%
+    * Extremely dangerous = 76–100%
 
 - Acquisition:
-1. Google Image (search terms: "Philippines spaghetti wires", "messy electric post, "overloaded cables")
-2. Pexels (free stock images of "clean electric pole lines")
-3. News Articles (ABS-CBN, GMA, Rappler, Inquirer)
-4. Personal Images
+    * Google Image (search terms: "Philippines spaghetti wires", "messy electric post, "overloaded cables")
+    * Google Maps
+    * Pexels (free stock images of "clean electric pole lines")
+    * News Articles (ABS-CBN, GMA, Rappler, Inquirer)
+    * Personal Images
 
 - Expected size: 
-- 50 images per class
-- 200 images in total
+    * 50 images per class
+    * 200 images in total
 
 ## 5. Technical Approach
 - Architecture sketch
@@ -51,8 +52,8 @@ Therefore, this project aims to develop a deep learning- based system that analy
 
 ## 6. Expected Challenges & Mitigations
 - Challenge: Small dataset
-- Solution: Combine two or more datasets / Data Augmentation
+    * Solution: Combine two or more datasets / Data Augmentation
 
 - Challenge: Real-time performance on laptop
-- Solution: YOLOv8n or Reduce frame resolution
+    * Solution: YOLOv8n or Reduce frame resolution
 
