@@ -30,8 +30,8 @@ Therefore, this project aims to develop a deep learning- based system that analy
     * Personal Images
 
 - Expected size: 
-    * 50 images per class
-    * 200 images in total
+    * 52 images per class
+    * 208 images in total
 
 ## 5. Technical Approach
 - Architecture sketch
