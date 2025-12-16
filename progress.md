@@ -7,7 +7,7 @@
 ## 📊 Current Status
 | Milestone | Status | Notes |
 |-----------|--------|-------|
-| Dataset Preparation | ✅ In Progress | images downloaded/preprocessed |
+| Dataset Preparation | ✅ Done | images downloaded/preprocessed |
 | Initial Training | ⏳ Pending | epochs completed |
 | Baseline Evaluation | ⏳ Pending | Training ongoing |
 | Model Fine-tuning | ⏳ Not Started | Planned for tomorrow |
@@ -59,7 +59,7 @@
 ## 3. Challenges Encountered & Solutions
 | Issue | Status | Resolution |
 |-------|--------|------------|
-| Small dataset  | ⏳ Planned | Data augmentation |
+| Small dataset  | ⏳ In Progress | Data augmentation |
 | CUDA out of memory | ⏳ Planned | Reduced batch_size from 32→16 |
 | Class imbalance | ⏳ Planned | Added class weights to loss function |
 | Slow validation | ⏳ Planned | Implement early stopping |
