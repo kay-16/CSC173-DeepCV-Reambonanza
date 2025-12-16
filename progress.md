@@ -13,8 +13,8 @@
 | Model Fine-tuning | ⏳ Not Started | Planned for tomorrow |
 
 ## 1. Dataset Progress
-- **Total images:** [e.g., 4,200]
-- **Train/Val/Test split:** [e.g., 70%/15%/15% or 2,940/630/630]
+- **Total images:** 208 images acquired
+- **Train/Val/Test split:** 70%/15%/15%
 - **Classes implemented:** 
 * 4 classes and labels:
     * Safe = 0–25% clutter
@@ -22,7 +22,11 @@
     * Dangerous = 51–75%
     * Extremely dangerous = 76–100%
     
-- **Preprocessing applied:** Resize(640), normalization, augmentation (flip, rotate, brightness)
+- **Preprocessing applied:** 
+    * Resize(640) 
+    * Normalization
+    * Augmentation [flip, rotate small angles (e.g. ±15° or ±20°), brightness]
+    * Random contrast
 
 **Sample data preview:**
 
