@@ -31,16 +31,16 @@
 **Sample data preview:**
 
 <p><b>Dangerous</b></p>
-<img src="dataset/train/dangerous/image_1.jpeg" width="300">
+<img src="dataset/raw/dangerous/image_1.jpeg" width="300">
 
 <p><b>Extremely Dangerous</b></p>
-<img src="dataset/train/extremely_dangerous/image_5.jpeg" width="300">
+<img src="dataset/raw/extremely_dangerous/image_5.jpeg" width="300">
 
 <p><b>Safe</b></p>
-<img src="dataset/train/safe/image_1.jpg" width="300">
+<img src="dataset/raw/safe/image_1.jpg" width="300">
 
 <p><b>Slightly Risky</b></p>
-<img src="dataset/train/slightly_risky/image_1.jpeg" width="300">
+<img src="dataset/raw/slightly_risky/image_1.jpeg" width="300">
 
 ## 2. Training Progress
 
