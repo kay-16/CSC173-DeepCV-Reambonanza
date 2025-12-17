@@ -8,7 +8,7 @@
 | Milestone | Status | Notes |
 |-----------|--------|-------|
 | Dataset Preparation | ✅ Done | images downloaded/preprocessed |
-| Initial Training | ⏳ Pending | epochs completed |
+| Initial Training | ⏳ In Progress | epochs completed |
 | Baseline Evaluation | ⏳ Pending | Training ongoing |
 | Model Fine-tuning | ⏳ Not Started | Planned for tomorrow |
 
