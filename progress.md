@@ -59,7 +59,8 @@
 ## 3. Challenges Encountered & Solutions
 | Issue | Status | Resolution |
 |-------|--------|------------|
-| Small dataset  | ⏳ In Progress | Data augmentation |
+| Small dataset  | ✅ Done | Data augmentation (Added more augmentation to increase variability) |
+| Train accuracy is very high, test accuracy is low  | ⏳ In Progress | Freeze most of the backbone layers to avoid overfitting |
 | CUDA out of memory | ⏳ Planned | Reduced batch_size from 32→16 |
 | Class imbalance | ⏳ Planned | Added class weights to loss function |
 | Slow validation | ⏳ Planned | Implement early stopping |
