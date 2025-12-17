@@ -45,16 +45,16 @@
 ## 2. Training Progress
 
 **Training Curves (so far)**
-![Loss Curve](images/loss_curve.png)
-![mAP Curve](images/map_curve.png)
+![Training and Validation Loss](image-1.png)
+![Accuracy Curve](image-2.png)
 
-**Current Metrics:**
+**Current Metrics (Epoch 15):**
 | Metric | Train | Val |
 |--------|-------|-----|
-| Loss | [0.45] | [0.62] |
-| mAP@0.5 | [78%] | [72%] |
-| Precision | [0.81] | [0.75] |
-| Recall | [0.73] | [0.68] |
+| Loss | 0.88 | 0.80 |
+| Accuracy | 62.24% | 60.71% |
+| Precision | — | — |
+| Recall | — | — |
 
 ## 3. Challenges Encountered & Solutions
 | Issue | Status | Resolution |
