@@ -59,14 +59,17 @@
 | Precision | — | — |
 | Recall | — | — |
 
+
+
 ## 3. Challenges Encountered & Solutions
 | Issue | Status | Resolution |
 |-------|--------|------------|
 | Small dataset  | ✅ Done | Data augmentation (Added more augmentation to increase variability) |
-| Train accuracy is very high, test accuracy is low  | ⏳ In Progress | Freeze most of the backbone layers to avoid overfitting |
-| CUDA out of memory | ⏳ Planned | Reduced batch_size from 32→16 |
-| Class imbalance | ⏳ Planned | Added class weights to loss function |
-| Slow validation | ⏳ Planned | Implement early stopping |
+| Train accuracy is very high, test accuracy is low  | ✅ Done | Freeze most of the backbone layers to avoid overfitting |
+| High Initial Learning Rate Destroys Weights | ✅ Done | Implemented Two-Phase Fine-Tuning: Used a low Learning Rate (0.0001) and froze most of the backbone layers (EfficientNet-B0 base) during Phase 1. |
+| Small Dataset / Low Variability | ⏳ In Progress | Strategy Change: Replaced basic data augmentation (flip, rotation, jitter) with Aggressive Augmentation (TrivialAugmentWide) to significantly increase data variability and avoid overfitting. |
+| Significant Overfitting Gap (Train Acc ~90%, Val Acc ~60%) | ⏳ In Progress | Strategy Change: Unfroze all layers (Phase 2) and used a lower Learning Rate (0.00001) combined with Aggressive Augmentation to force the model to learn more generalizable features. |
+
 
 ## 4. Next Steps (Before Final Submission)
 - [ ] Complete training (50 more epochs)
