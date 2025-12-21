@@ -45,8 +45,11 @@
 ## 2. Training Progress
 
 **Training Curves (so far)**
-![Training and Validation Loss](image-1.png)
-![Accuracy Curve](image-2.png)
+<p><b>Initial Training & Validation Loss</b></p>
+<img src="/image-1.png" width="300">
+
+<p><b>Initial Training & Validation Accuracy</b></p>
+<img src="/image-2.png" width="300">
 
 **Current Metrics (Epoch 15):**
 | Metric | Train | Val |
