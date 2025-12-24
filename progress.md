@@ -9,18 +9,20 @@
 |-----------|--------|-------|
 | Dataset Preparation | ✅ Done | images downloaded/preprocessed |
 | Initial Training | ✅ Done | 15 epochs completed |
-| Baseline Evaluation | ⏳ Pending | Training ongoing |
-| Model Fine-tuning | ⏳ Not Started | Planned for tomorrow |
+| Baseline Evaluation | ✅ Done | Final metrics gathered on unseen test set |
+| Model Fine-tuning (Phase 2) | ✅ Done | Completed 40 epochs (Unfrozen Backbone) |
+| Final Inference Script | ✅ Done | Deployed two-stage model for local webcam inference |
+| Final Metrics (Test Set) | ✅ Done | Test Accuracy achieved: 50.00% |
 
 ## 1. Dataset Progress
 - **Total images:** 208 images acquired
 - **Train/Val/Test split:** 70%/15%/15%
 - **Classes implemented:** 
-* 4 classes and labels:
-    * Safe = 0–25% clutter
-    * Slightly risky = 26–50%
-    * Dangerous = 51–75%
-    * Extremely dangerous = 76–100%
+* 4 classes:
+    * Safe
+    * Slightly 
+    * Dangerous
+    * Extremely dangerous
     
 - **Preprocessing applied:** 
     * Resize(640) 
@@ -51,15 +53,23 @@
 <p><b>Initial Training & Validation Accuracy</b></p>
 <img src="/image-2.png" width="300">
 
-**Current Metrics (Epoch 15):**
+<p><b>Full Training & Validation Loss & Accuracy (Phase 1 + Phase 2)</b></p>
+![Training & Validation Loss & Accuracy](image.png)
+
+**Final Test Set Metrics (EfficientNet-B0 Classifier):**
 | Metric | Train | Val |
 |--------|-------|-----|
 | Loss | 0.88 | 0.80 |
-| Accuracy | 62.24% | 60.71% |
-| Precision | — | — |
-| Recall | — | — |
+| Accuracy | 50.00% | 60.71% |
+| Precision | 41.11% | — |
+| Recall | 50% | — |
 
-
+**Final Test Set Metrics (YOLOv8 Detection Model):**
+| Metric | Peak Validation Score | Note |
+|--------|-------|-----|
+| Precision | 51.82% | Moderate confidence in bounding boxes |
+| Recall | 34.60% | The detector missed two-thirds of the total clusters |
+| mAP50 | 16.99% | Low detection accuracy, indicating a bottleneck |
 
 ## 3. Challenges Encountered & Solutions
 | Issue | Status | Resolution |
@@ -68,12 +78,12 @@
 | Train accuracy is very high, test accuracy is low  | ✅ Done | Freeze most of the backbone layers to avoid overfitting |
 | High Initial Learning Rate Destroys Weights | ✅ Done | Implemented Two-Phase Fine-Tuning: Used a low Learning Rate (0.0001) and froze most of the backbone layers (EfficientNet-B0 base) during Phase 1. |
 | Small Dataset / Low Variability | ⏳ In Progress | Strategy Change: Replaced basic data augmentation (flip, rotation, jitter) with Aggressive Augmentation (TrivialAugmentWide) to significantly increase data variability and avoid overfitting. |
-| Significant Overfitting Gap (Train Acc ~90%, Val Acc ~60%) | ⏳ In Progress | Strategy Change: Unfroze all layers (Phase 2) and used a lower Learning Rate (0.00001) combined with Aggressive Augmentation to force the model to learn more generalizable features. |
+| Significant Overfitting Gap (Train Acc ~90%, Val Acc ~60%) | ✅ Done | Strategy Change: Unfroze all layers (Phase 2) and used a lower Learning Rate (0.00001) combined with Aggressive Augmentation to force the model to learn more generalizable features. |
 
 
 ## 4. Next Steps (Before Final Submission)
-- [ ] Complete training (50 more epochs)
-- [ ] Hyperparameter tuning (learning rate, augmentations)
-- [ ] Baseline comparison (vs. original pre-trained model)
-- [ ] Record 5-min demo video
+- [x] Complete training (50 more epochs)
+- [x] Hyperparameter tuning (learning rate, augmentations)
+- [x] Baseline comparison (vs. original pre-trained model)
+- [x] Record 5-min demo video
 - [ ] Write complete README.md with results
