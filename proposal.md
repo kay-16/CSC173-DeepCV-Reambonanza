@@ -44,7 +44,7 @@ Therefore, this project aims to develop a deep learning- based system that analy
 | 4 | Cropping | Original frame is cropped to include only the wire clusters bounding box |
 | 5 | Stage 2: Classification (EfficientNet-B0) | EfficientNet-B0 model processes the cropped image and classifies it (4 output neurons) |
 | 6 | Decision Engine | Uses Softmax/Argmax to select one of the 4 classes |
-| 7 | Final Output | Real-time display of the output class (e.g. Dangerous) and the FPS |
+| 7 | Final Output | Real-time display of the output class (e.g. Dangerous) |
 
 - Model: EfficientNet-B0 + YOLOv8n
 - Framework: PyTorch
