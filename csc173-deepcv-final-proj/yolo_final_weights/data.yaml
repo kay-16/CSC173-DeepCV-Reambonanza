@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 4
+names: ['dangerous', 'extremely_dangerous', 'safe', 'slightly_risky']
+
+roboflow:
+  workspace: kcr-qnmyu
+  project: computer-vision-project-ovt2l
+  version: 7
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/kcr-qnmyu/computer-vision-project-ovt2l/dataset/7
