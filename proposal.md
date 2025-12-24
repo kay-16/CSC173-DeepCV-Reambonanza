@@ -16,11 +16,11 @@ Therefore, this project aims to develop a deep learning- based system that analy
 - Implement complete training pipeline including data preprocessing, model training, validation, and evaluation.
 
 ## 4. Dataset Plan
-- Classes and Labels:
-    * Safe = 0–25% clutter
-    * Slightly risky = 26–50%
-    * Dangerous = 51–75%
-    * Extremely dangerous = 76–100%
+- Classes:
+    * Safe - Minimal wiring, no apparent risk, clean environment.
+    * Slightly risky - Some excess/tangled wiring, but no immediate hazard.
+    * Dangerous - Significant spaghetti wiring, noticeable overloading, structural issues.
+    * Extremely dangerous - Severe clutter, fire hazards, potential for imminent failure.
 
 - Acquisition:
     * Google Image (search terms: "Philippines spaghetti wires", "messy electric post, "overloaded cables")
