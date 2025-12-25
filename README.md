@@ -21,12 +21,13 @@
 
 ## Introduction
 ### Problem Statement
-[Describe the real-world vision problem and why it matters locally (e.g., IoT waste systems in Iligan).]
+Electrical posts in several urban areas of third-world countries like the Philippines, often contains clusters of tangled, overloaded, or poorly maintained wiring, which are commonly known as "spaghetti wires". These wires can often be hazardous which can pose risks of electrical fires, electrocution, and service interruptions. Manual inspection by local authorities can be time-consuming, inconsistent, and limited to manpower. 
+
+Therefore, this project aims to develop a deep learning- based system that analysises images of electrical posts and classifying them into multiple risk levels. By leveraging computer vision, the system can offer safety monitoring, early hazard detection, improve maintenance planning, and overall help authorities prioritise which poles to clean up first. In Philippine context, this project satifies Anti-Obstruction of Power Lines Act or the R.A. 11361, which ensures the smooth and uninterrupted transmission of electricity.
 
 ### Objectives
-- [Objective 1: e.g., Achieve >90% detection accuracy]
-- [Objective 2: Integrate with decision logic]
-- [Objective 3: Deploy on edge device]
+- Develop a deep learning-based classification system and categorising hazardous wire conditions in electrical poles.
+- Implement complete training pipeline including data preprocessing, model training, validation, and evaluation.
 
 ![Problem Demo](images/problem_example.gif) [web:41]
 
@@ -37,27 +38,73 @@
 
 ## Methodology
 ### Dataset
-- Source: [e.g., Custom 5K images + COCO subset]
-- Split: 70/15/15 train/val/test
-- Preprocessing: Augmentation, resizing to 640x640 [web:41]
+- Source: Custom Dataset of Electrical Posts collected via web scraping, open-source repositories, and original photography of urban Philippine electrical posts. The images were manually labeled for risk classification.
+
+- Size: Approximately 500 images (2000 total files after augmentation).
+- Classes: Four (4) risk categories reflecting severity of visual clutter/hazard:
+    * SAFE: Minimal wiring, no apparent risk, clean environment.
+    * SLIGHTLY RISKY: Some excess/tangled wiring, but no immediate hazard.
+    * DANGEROUS: Significant spaghetti wiring, noticeable overloading, structural issues.
+    * EXTREMELY DANGEROUS: Severe clutter, fire hazards, potential for imminent failure.
+
+- Split: 70% Train, 15% Validation, 15% Test.
+    * Train: ~205 images (Original) -> ~1400 (Augmented)
+    * Validation: ~75 images
+    * Test: ~75 images
+
+- Preprocessing: Augmentation, resizing to 224 x 224 pixels, conversion to PyTorch Tensor, and normalization using ImageNet means and standard deviations. The following augmentations were applied to the training set: Random Horizontal Flip, Random Rotation 15 degrees, and Color Jitter.
+
 
 ### Architecture
-![Model Diagram](images/architecture.png)
-- Backbone: [e.g., CSPDarknet53]
-- Head: [e.g., YOLO detection layers]
+![Model Diagram](csc173-deepcv-final-proj/images/cv_architecture_diagram.png)
+- Backbone: EfficientNet-B0
+- Head: Custom Classification Head
 - Hyperparameters: Table below
 
-| Parameter | Value |
-|-----------|-------|
-| Batch Size | 16 |
-| Learning Rate | 0.01 |
-| Epochs | 100 |
-| Optimizer | SGD |
+| Parameter | YOLOv8n (Detection) | EfficientNet-B0 (Phase 1) | EfficientNet-B0 (Phase 2) |
+|-----------|-------| -------| -------|
+| Batch Size | 16 | 32 | 32 |
+| Learning Rate | 0.01 | 0.0001 | 0.00001 |
+| Epochs | 50 (stopped at 35) | 50 | 40 |
+| Optimizer | AdamW | Adam | Adam |
 
 ### Training Code Snippet
-train.py excerpt
-model = YOLO('yolov8n.pt')
-model.train(data='dataset.yaml', epochs=100, imgsz=640)
+**YOLOv8 Detection Training**
+efficientnet_implementation.ipynb
+`!yolo train \
+    data={FINAL_DATA_YAML_PATH} \
+    model=yolov8m.pt \
+    epochs=50 \
+    patience=10 \
+    scale=0.9\
+    imgsz=640 \
+    project={PERMANENT_RESULTS_DIR} \
+    name='V6_Final'`
+
+**EfficientNet-B0 Classifier Training Phase 1: Feature Extraction**
+`model, train_losses, train_accs, val_losses, val_accs, val_precisions, val_recalls = train_model(
+    efficientnet_b0_model,
+    train_loader,
+    val_loader,
+    loss_func,
+    optimizer,
+    scheduler,
+    num_epochs=50,
+    device=device
+)`
+
+**EfficientNet-B0 Classifier Training Phase 2: Fine-Tuning**
+`fine_tune_epochs = 40 
+model_fine_tuned, train_losses_ft, train_accs_ft, val_losses_ft, val_accs_ft, val_precisions_ft, val_recalls_ft = train_model(
+    fine_tune_model,
+    train_loader,
+    val_loader,
+    loss_func,
+    fine_tune_optimizer,
+    fine_tune_scheduler,
+    num_epochs=fine_tune_epochs,
+    device=device
+)`
 
 
 ## Experiments & Results
@@ -67,24 +114,35 @@ model.train(data='dataset.yaml', epochs=100, imgsz=640)
 | Baseline (YOLOv8n) | 85% | 0.87 | 0.82 | 12 |
 | **Ours (Fine-tuned)** | **92%** | **0.94** | **0.89** | **15** |
 
-![Training Curve](images/loss_accuracy.png)
+![Training Curve](csc173-deepcv-final-proj/images/efficientnet_accuracy_loss.png)
 
 ### Demo
 ![Detection Demo](demo/detection.gif)
-[Video: [CSC173_YourLastName_Final.mp4](demo/CSC173_YourLastName_Final.mp4)] [web:41]
+[Video: [CSC173_YourLastName_Final.mov](csc173-deepcv-final-proj/demo/CSC173_Reambonanza_Final.mov)] [web:41]
 
 ## Discussion
-- Strengths: [e.g., Handles occluded trash well]
-- Limitations: [e.g., Low-light performance]
-- Insights: [e.g., Data augmentation boosted +7% mAP] [web:25]
+- Strengths: 
+    * Successful Classification: The EfficientNet-B0 classifier achieved 50.00% accuracy on the 4-class, highly subjective risk problem, significantly exceeding the 25% random chance baseline.
+
+    * Effective Two-Phase Fine-Tuning: The strategy successfully prevented catastrophic forgetting and pushed validation accuracy to a peak of 67.86%.
+
+    * Robust Augmentation: Data augmentation helped manage the inherent difficulties of a small, custom dataset.
+
+- Limitations:
+    * System Bottleneck: The overall system performance is heavily constrained by the low YOLOv8 Detection Recall (34.60%) and low $\text{mAP}$ ($\approx 17\%$). If the detector fails to localize the cluster, the classifier cannot function.
+
+    * Generalization Gap: The significant drop from peak Validation Accuracy (67.86%) to Final Test Accuracy (50.00%) confirms the model overfit the small dataset and struggled with true generalization.
+
+- Insights:
+    * Future efforts should explore from model tuning to improving annotation quality (using Instance Segmentation) and data quantity for the YOLO detector.
 
 ## Ethical Considerations
-- Bias: Dataset skewed toward plastic/metal; rural waste underrepresented
-- Privacy: No faces in training data
-- Misuse: Potential for surveillance if repurposed [web:41]
+- Bias: Dataset skew toward specific types of wires/poles
+- Privacy: No human subjects or identifying information is present in the training data.
+- Misuse: Potential application for automated infrastructure inspection, which, if repurposed without consent, could raise surveillance or property rights issues [web:41]
 
 ## Conclusion
-[Key achievements and 2-3 future directions, e.g., Deploy to Raspberry Pi for IoT.]
+This project successfully implemented a state-of-the-art two-stage computer vision system for assessing electrical wire cluster risk, achieving a final, unbiased classification accuracy of 50.00% on unseen test data. The use of EfficientNet-B0 with Two-Phase Fine-Tuning proved effective for the complex classification task.
 
 ## Installation
 1. Clone repo: `git clone https://github.com/yourusername/CSC173-DeepCV-YourLastName`
