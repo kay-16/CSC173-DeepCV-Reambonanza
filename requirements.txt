@@ -1,0 +1,6 @@
+# COMPUTER VISION (YOLO & EfficientNet)
+
+torch>=2.0
+ultralytics
+opencv-python
+albumentations
