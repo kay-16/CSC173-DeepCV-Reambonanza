@@ -6,7 +6,13 @@
 [![Python](https://img.shields.io/badge/Python-3.8+-blue)](https://python.org) [![PyTorch](https://img.shields.io/badge/PyTorch-2.0-orange)](https://pytorch.org)
 
 ## Abstract
-[150-250 words: Summarize problem (e.g., "Urban waste sorting in Mindanao"), dataset, deep CV method (e.g., YOLOv8 fine-tuned on custom trash images), key results (e.g., 92% mAP), and contributions.][web:25][web:41]
+This project addresses the critical problem of automated risk assessment for complex, unmanaged wire clusters in urban areas, a task currently requiring dangerous and subjective manual inspection. A two-stage Deep Computer Vision pipeline is developed using a custom dataset of wire cluster images annotated for four distinct risk levels (e.g., 'safe' to 'extremely dangerous').
+
+The methodology employed a YOLOv8m model as the primary object detector, responsible for localizing the cluster, followed by an EfficientNet model acting as a 4-class classifier to determine the risk level within the detected bounding box. The YOLOv8m detector was trained for 50 epochs on the dataset.
+
+Evaluation on the test set revealed the system's primary bottleneck to be the detection phase. The YOLOv8m model achieved a low $\mathbf{\text{mAP}@0.5}$ of $\mathbf{2.71\%}$ (Precision: $\mathbf{7.82\%}$, Recall: $\mathbf{5.14\%}$), indicating a severe struggle to generalize localization on the tangeld wire. In contrast, the downstream EfficientNet classifier demonstrated the conceptual viability of the risk assessment, achieving $\mathbf{50.00\%}$ accuracy, which successfully doubled the $\mathbf{25.00\%}$ random chance baseline.
+
+The key contribution of this project is the definitive isolation of the system's failure point, which is the initial localization due to the limitations of rectangular bounding boxes on irregular objects. Future work suggests towards exploring Instance Segmentation to precisely mask the wire clusters, to resolve the current detection deficiency and lead to a more robust, high-performance system.[web:25][web:41]
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -32,9 +38,15 @@ Therefore, this project aims to develop a deep learning- based system that analy
 ![Problem Demo](images/problem_example.gif) [web:41]
 
 ## Related Work
-- [Paper 1: YOLOv8 for real-time detection [1]]
-- [Paper 2: Transfer learning on custom datasets [2]]
-- [Gap: Your unique approach, e.g., Mindanao-specific waste classes] [web:25]
+- <div class="csl-entry">Kim, J., Kamari, M., Lee, S., &#38; Ham, Y. (2021). Large-Scale Visual Data–Driven Probabilistic Risk Assessment of Utility Poles Regarding the Vulnerability of Power Distribution Infrastructure Systems. <i>Journal of Construction Engineering and Management-Asce</i>, <i>147</i>(10), 04021121. https://doi.org/10.1061/(ASCE)CO.1943-7862.0002153</div>
+
+- <div class="csl-entry">Benelmostafa, B.-E., &#38; Medromi, H. (2025). PowerLine-MTYOLO: A Multitask YOLO Model for Simultaneous Cable Segmentation and Broken Strand Detection. <i>Drones</i>, <i>9</i>(7), 505. https://doi.org/10.3390/drones9070505</div>
+
+- Gap:  
+    * The Two-Stage Risk Assessment Pipeline - While other works use two stages to find a component and then classify its defect type, my pipeline is designed for abstract risk assessment using EfficientNetB0 (for classification) and YOLOv8n (for detection)
+
+    * The dataset and target - By detecting formless, tangled wire clusters rather than distinct, standardized hardware components (like insulators, dampeners, or towers)
+[web:25]
 
 ## Methodology
 ### Dataset
@@ -70,6 +82,7 @@ Therefore, this project aims to develop a deep learning- based system that analy
 
 ### Training Code Snippet
 **YOLOv8 Detection Training**
+
 efficientnet_implementation.ipynb
 `!yolo train \
     data={FINAL_DATA_YAML_PATH} \
@@ -82,6 +95,7 @@ efficientnet_implementation.ipynb
     name='V6_Final'`
 
 **EfficientNet-B0 Classifier Training Phase 1: Feature Extraction**
+
 `model, train_losses, train_accs, val_losses, val_accs, val_precisions, val_recalls = train_model(
     efficientnet_b0_model,
     train_loader,
@@ -94,6 +108,7 @@ efficientnet_implementation.ipynb
 )`
 
 **EfficientNet-B0 Classifier Training Phase 2: Fine-Tuning**
+
 `fine_tune_epochs = 40 
 model_fine_tuned, train_losses_ft, train_accs_ft, val_losses_ft, val_accs_ft, val_precisions_ft, val_recalls_ft = train_model(
     fine_tune_model,
@@ -118,7 +133,7 @@ model_fine_tuned, train_losses_ft, train_accs_ft, val_losses_ft, val_accs_ft, va
 
 ### Demo
 ![Detection Demo](demo/detection.gif)
-[Video: [CSC173_YourLastName_Final.mov](csc173-deepcv-final-proj/demo/CSC173_Reambonanza_Final.mov)] [web:41]
+https://drive.google.com/drive/folders/1OCeNwBQlvovNFA2rdbr0W-rqcMrWEhRS?usp=sharing [web:41]
 
 ## Discussion
 - Strengths: 
@@ -145,9 +160,9 @@ model_fine_tuned, train_losses_ft, train_accs_ft, val_losses_ft, val_accs_ft, va
 This project successfully implemented a state-of-the-art two-stage computer vision system for assessing electrical wire cluster risk, achieving a final, unbiased classification accuracy of 50.00% on unseen test data. The use of EfficientNet-B0 with Two-Phase Fine-Tuning proved effective for the complex classification task.
 
 ## Installation
-1. Clone repo: `git clone https://github.com/yourusername/CSC173-DeepCV-YourLastName`
+1. Clone repo: `git clone https://github.com/kay-16/CSC173-DeepCV-Reambonanza.git`
 2. Install deps: `pip install -r requirements.txt`
-3. Download weights: See `models/` or run `download_weights.sh` [web:22][web:25]
+3. Download weights: Run `download_weights.sh` [web:22][web:25]
 
 **requirements.txt:**
 torch>=2.0
@@ -156,8 +171,9 @@ opencv-python
 albumentations
 
 ## References
-[1] Jocher, G., et al. "YOLOv8," Ultralytics, 2023.  
-[2] Deng, J., et al. "ImageNet: A large-scale hierarchical image database," CVPR, 2009. [web:25]
+[1] <div class="csl-entry">Kim, J., Kamari, M., Lee, S., &#38; Ham, Y. (2021). Large-Scale Visual Data–Driven Probabilistic Risk Assessment of Utility Poles Regarding the Vulnerability of Power Distribution Infrastructure Systems. <i>Journal of Construction Engineering and Management-Asce</i>, <i>147</i>(10), 04021121. https://doi.org/10.1061/(ASCE)CO.1943-7862.0002153</div>
+
+[2] <div class="csl-entry">Benelmostafa, B.-E., &#38; Medromi, H. (2025). PowerLine-MTYOLO: A Multitask YOLO Model for Simultaneous Cable Segmentation and Broken Strand Detection. <i>Drones</i>, <i>9</i>(7), 505. https://doi.org/10.3390/drones9070505</div> [web:25]
 
 ## GitHub Pages
 View this project site: [https://jjmmontemayor.github.io/CSC173-DeepCV-Montemayor/](https://jjmmontemayor.github.io/CSC173-DeepCV-Montemayor/) [web:32]
