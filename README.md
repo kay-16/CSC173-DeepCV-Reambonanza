@@ -10,7 +10,7 @@ This project addresses the critical problem of automated risk assessment for com
 
 The methodology employed a YOLOv8m model as the primary object detector, responsible for localizing the cluster, followed by an EfficientNet model acting as a 4-class classifier to determine the risk level within the detected bounding box. The YOLOv8m detector was trained for 50 epochs on the dataset.
 
-Evaluation on the test set revealed the system's primary bottleneck to be the detection phase. The YOLOv8m model achieved a low $\mathbf{\text{mAP}@0.5}$ of $\mathbf{2.71\%}$ (Precision: $\mathbf{7.82\%}$, Recall: $\mathbf{5.14\%}$), indicating a severe struggle to generalize localization on the tangeld wire. In contrast, the downstream EfficientNet classifier demonstrated the conceptual viability of the risk assessment, achieving $\mathbf{50.00\%}$ accuracy, which successfully doubled the $\mathbf{25.00\%}$ random chance baseline.
+Evaluation on the test set revealed the system's primary bottleneck to be the detection phase. The YOLOv8m model achieved a low $\mathbf{\text{mAP}@0.5}$ of 2.71\% (Precision: 7.82%, Recall: 5.14%), indicating a severe struggle to generalize localization on the tangeld wire. In contrast, the downstream EfficientNet classifier demonstrated the conceptual viability of the risk assessment, achieving 50.00% accuracy, which successfully doubled the 25.00% random chance baseline.
 
 The key contribution of this project is the definitive isolation of the system's failure point, which is the initial localization due to the limitations of rectangular bounding boxes on irregular objects. Future work suggests towards exploring Instance Segmentation to precisely mask the wire clusters, to resolve the current detection deficiency and lead to a more robust, high-performance system.[web:25][web:41]
 
@@ -35,14 +35,14 @@ Therefore, this project aims to develop a deep learning- based system that analy
 - Develop a deep learning-based classification system and categorising hazardous wire conditions in electrical poles.
 - Implement complete training pipeline including data preprocessing, model training, validation, and evaluation.
 
-![Problem Demo](images/problem_example.gif) [web:41]
+![Problem Demo](images/problem_example.gif)[web:41]
 
 ## Related Work
 - <div class="csl-entry">Kim, J., Kamari, M., Lee, S., &#38; Ham, Y. (2021). Large-Scale Visual Data–Driven Probabilistic Risk Assessment of Utility Poles Regarding the Vulnerability of Power Distribution Infrastructure Systems. <i>Journal of Construction Engineering and Management-Asce</i>, <i>147</i>(10), 04021121. https://doi.org/10.1061/(ASCE)CO.1943-7862.0002153</div>
 
 - <div class="csl-entry">Benelmostafa, B.-E., &#38; Medromi, H. (2025). PowerLine-MTYOLO: A Multitask YOLO Model for Simultaneous Cable Segmentation and Broken Strand Detection. <i>Drones</i>, <i>9</i>(7), 505. https://doi.org/10.3390/drones9070505</div>
 
-- Gap:  
+- Gap addressed:  
     * The Two-Stage Risk Assessment Pipeline - While other works use two stages to find a component and then classify its defect type, my pipeline is designed for abstract risk assessment using EfficientNetB0 (for classification) and YOLOv8n (for detection)
 
     * The dataset and target - By detecting formless, tangled wire clusters rather than distinct, standardized hardware components (like insulators, dampeners, or towers)
@@ -132,8 +132,7 @@ model_fine_tuned, train_losses_ft, train_accs_ft, val_losses_ft, val_accs_ft, va
 ![Training Curve](csc173-deepcv-final-proj/images/efficientnet_accuracy_loss.png)
 
 ### Demo
-![Detection Demo](demo/detection.gif)
-https://drive.google.com/drive/folders/1OCeNwBQlvovNFA2rdbr0W-rqcMrWEhRS?usp=sharing [web:41]
+Video Demo: https://drive.google.com/drive/folders/1OCeNwBQlvovNFA2rdbr0W-rqcMrWEhRS?usp=sharing [web:41]
 
 ## Discussion
 - Strengths: 
@@ -144,7 +143,7 @@ https://drive.google.com/drive/folders/1OCeNwBQlvovNFA2rdbr0W-rqcMrWEhRS?usp=sha
     * Robust Augmentation: Data augmentation helped manage the inherent difficulties of a small, custom dataset.
 
 - Limitations:
-    * System Bottleneck: The overall system performance is heavily constrained by the low YOLOv8 Detection Recall (34.60%) and low $\text{mAP}$ ($\approx 17\%$). If the detector fails to localize the cluster, the classifier cannot function.
+    * System Bottleneck: The overall system performance is heavily constrained by the low YOLOv8 Detection Recall (34.60%) and low {mAP} ~17%. If the detector fails to localize the cluster, the classifier cannot function.
 
     * Generalization Gap: The significant drop from peak Validation Accuracy (67.86%) to Final Test Accuracy (50.00%) confirms the model overfit the small dataset and struggled with true generalization.
 
@@ -176,4 +175,4 @@ albumentations
 [2] <div class="csl-entry">Benelmostafa, B.-E., &#38; Medromi, H. (2025). PowerLine-MTYOLO: A Multitask YOLO Model for Simultaneous Cable Segmentation and Broken Strand Detection. <i>Drones</i>, <i>9</i>(7), 505. https://doi.org/10.3390/drones9070505</div> [web:25]
 
 ## GitHub Pages
-View this project site: [https://jjmmontemayor.github.io/CSC173-DeepCV-Montemayor/](https://jjmmontemayor.github.io/CSC173-DeepCV-Montemayor/) [web:32]
+View this project site: https://kay-16.github.io/CSC173-DeepCV-Reambonanza/ [web:32]
