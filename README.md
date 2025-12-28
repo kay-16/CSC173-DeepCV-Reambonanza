@@ -64,8 +64,18 @@ Therefore, this project aims to develop a deep learning- based system that analy
     * Validation: ~75 images
     * Test: ~75 images
 
-- Preprocessing: Augmentation, resizing to 224 x 224 pixels, conversion to PyTorch Tensor, and normalization using ImageNet means and standard deviations. The following augmentations were applied to the training set: Random Horizontal Flip, Random Rotation 15 degrees, and Color Jitter.
-
+- Preprocessing: Augmentation, resizing to 224 x 224 pixels, conversion to PyTorch Tensor, and normalization using ImageNet means and standard deviations. The following augmentations were applied to the training set:
+    * Flip: Horizontal, Vertical
+    * Crop: 7% Minimum Zoom, 16% Maximum Zoom
+    * Rotation: Between -15° and +15°
+    * Shear: ±15° Horizontal, ±15° Vertical
+    * Grayscale: Apply to 15% of images
+    * Hue: Between -15° and +15°
+    * Saturation: Between -25% and +25%
+    * Brightness: Between -15% and +15%
+    * Exposure: Between -10% and +10%
+    * Blur: Up to 2.5px
+    * Noise: Up to 0.14% of pixels
 
 ### Architecture
 ![Model Diagram](csc173-deepcv-final-proj/images/cv_architecture_diagram.png)
