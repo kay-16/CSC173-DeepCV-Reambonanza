@@ -121,15 +121,19 @@ model_fine_tuned, train_losses_ft, train_accs_ft, val_losses_ft, val_accs_ft, va
     device=device
 )`
 
-
 ## Experiments & Results
 ### Metrics
 | Model | mAP@0.5 | Precision | Recall | Inference Time (ms) |
 |-------|---------|-----------|--------|---------------------|
 | Baseline (YOLOv8n) | 85% | 0.87 | 0.82 | 12 |
-| **Ours (Fine-tuned)** | **92%** | **0.94** | **0.89** | **15** |
+| **Ours (YOLO-detector)** | **2.71%** | **7.82%** | **5.14%** | **23.2** |
+| **Ours (EfficientNet-detector)** | **2.71%** | **41.11%** | **50.00%** | **23.2** |
 
+Figure 1: Training and Validation Loss Curves for EfficientNet Classifier
 ![Training Curve](csc173-deepcv-final-proj/images/efficientnet_accuracy_loss.png)
+
+Figure 2: Training and Validation Loss Curves for YOLOv8n Detector
+![Training Curve](csc173-deepcv-final-proj/images/yolo_detector_accuracy_loss.png)
 
 ### Demo
 Video Demo: https://drive.google.com/drive/folders/1OCeNwBQlvovNFA2rdbr0W-rqcMrWEhRS?usp=sharing [web:41]
